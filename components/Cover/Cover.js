@@ -18,3 +18,4 @@ export const Cover = ({ children, background }) => {
     </div>
   );
 };
+

@@ -1,21 +1,22 @@
 import Image from "next/image";
-
-export const Cover = ({ children, background }) => {
-  const { featuredImage } = usePageContext();
-
-  return (
-    <div className="h-screen text-white bg-slate-800 relative min-h-[400px] flex justify-center items-center">
-      {(!!background || !!featuredImage) && (
-        <Image
-          alt="Cover"
-          src={background || featuredImage}
-          layout="fill"
-          objectFit="cover"
-          className="mix-blend-soft-light"
+ 
+export const Cover = (props) => {
+    console.log(props.background)
+    const loaderProp =({ src }) => {
+        return src;
+    }
+ 
+    return (
+    <div className="h-screen bg-slate-800 relative min-h-[400px] flex justify-center items-center">
+        <Image 
+            alt="Cover" 
+            src={props.background} 
+            fill
+            cover 
+            className="mix-blend-soft-light"
+            loader={loaderProp}
         />
-      )}
-      <div className="max-w-5xl z-10">{children}</div>
+        {props.children}
     </div>
-  );
+    )
 };
-

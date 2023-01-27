@@ -1,22 +1,26 @@
 import Image from "next/image";
  
 export const Cover = (props) => {
-    console.log(props.background)
+    
     const loaderProp =({ src }) => {
         return src;
     }
  
     return (
-    <div className="h-screen bg-slate-800 relative min-h-[400px] flex justify-center items-center">
+    <div className="h-screen text-white bg-slate-800 relative min-h-[400px] w-[100px] flex justify-center items-center">
         <Image 
             alt="Cover" 
             src={props.background} 
             fill
-            cover 
+            cover="true" 
             className="mix-blend-soft-light"
             loader={loaderProp}
+            unoptimized={true}
+        
         />
-        {props.children}
+        
+       <div className="max-w-5xl z-10">{props.children}</div>
+        
     </div>
     )
 };
